@@ -15,4 +15,8 @@ class UserController extends Controller
         dump($value);
         return 'hhhh';
     }
+
+    public function profil(){
+        return view('front-office.profil');
+    }
 }

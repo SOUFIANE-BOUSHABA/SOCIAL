@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <input type="search" onkeyup="search()" name="search" id="search" class="form-control" style="width: 90%" placeholder="search">
-    <div class="row border d-flex justify-content-center">
+    <input type="search" onkeyup="search()" name="search" id="search" class="form-control mb-4"  placeholder="search">
+    <div class="row border d-flex justify-content-center mt-4">
         <div class="col-md-8" id="userssss">
             <div class="people-nearby">
               
