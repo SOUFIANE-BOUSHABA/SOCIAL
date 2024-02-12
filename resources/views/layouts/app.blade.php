@@ -19,12 +19,48 @@
         .post-content {
             white-space: pre-line; 
         }
+
+
+        body{
+            margin-top:20px;
+            background:#FAFAFA;    
+        }
+        /*==================================================
+        Nearby People CSS
+        ==================================================*/
+
+        .people-nearby .google-maps{
+        background: #f8f8f8;
+        border-radius: 4px;
+        border: 1px solid #f1f2f2;
+        padding: 20px;
+        margin-bottom: 20px;
+        }
+
+        .people-nearby .google-maps .map{
+        height: 300px;
+        width: 100%;
+        border: none;
+        }
+
+        .people-nearby .nearby-user{
+        padding: 20px 0;
+        border-top: 1px solid #f1f2f2;
+        border-bottom: 1px solid #f1f2f2;
+        margin-bottom: 20px;
+        }
+
+        img.profile-photo-lg{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="#">
            <h3>SOCIAL<span class="text-primary">ME</span> </h3>
         </a>
@@ -41,7 +77,7 @@
                             <a class="nav-link" href="/home">Post</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/home">users</a>
+                            <a class="nav-link" href="/users">users</a>
                         </li>
                       
                         <li class="nav-item">
