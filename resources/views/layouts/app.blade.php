@@ -11,6 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
+        nav{
+            margin-top: -20px;
+        }
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -25,9 +28,6 @@
             margin-top:20px;
             background:#FAFAFA;    
         }
-        /*==================================================
-        Nearby People CSS
-        ==================================================*/
 
         .people-nearby .google-maps{
         background: #f8f8f8;
@@ -55,6 +55,16 @@
         width: 80px;
         border-radius: 50%;
         }
+
+
+
+
+
+
+
+
+
+        
     </style>
 </head>
 <body>
@@ -92,13 +102,20 @@
                         
                         @auth
                         <div class="d-flex gap-4 align-items-center">
-                         
-                            <li class="nav-item">
-                                <form action="{{ route('logout') }}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
-                                </form>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    NAME
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   
+                                    <a class="dropdown-item" href="{{ route('profil') }}">Profil</a>
+                                    
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}">Logout</a>
+                          
+                                </div>
                             </li>
+                         
+                          
                         </div>
                           
                         @else
@@ -107,8 +124,10 @@
                                     Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   
                                     <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                                     <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                          
                                 </div>
                             </li>
                         @endauth
