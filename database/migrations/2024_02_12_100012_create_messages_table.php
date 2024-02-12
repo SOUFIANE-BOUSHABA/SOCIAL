@@ -18,7 +18,6 @@ class CreateMessagesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('recipient_id')->constrained('users');
             $table->text('content');
-
             $table->timestamps();
         });
     }
@@ -30,7 +29,6 @@ class CreateMessagesTable extends Migration
      */
 
     public function down()
-
     {
         Schema::dropIfExists('messages');
     }
