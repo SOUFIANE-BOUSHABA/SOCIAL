@@ -3,8 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
-
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('front-office.home');
@@ -23,3 +22,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/home',[PostController::class, 'home'])->name('frontOffice.home');
+
+
+Route::get('/users',[UserController::class, 'show'])->name('frontOffice.users');
+Route::get('/SearchUsers/{search}',[UserController::class, 'search'])->name('frontOffice.search');
