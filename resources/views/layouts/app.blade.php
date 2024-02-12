@@ -24,7 +24,7 @@
 <body>
 
 <nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="#">
            <h3>SOCIAL<span class="text-primary">ME</span> </h3>
         </a>
