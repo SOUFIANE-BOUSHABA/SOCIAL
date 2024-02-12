@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -19,3 +20,6 @@ Route::post('/registerUser', [AuthController::class, 'store'])->name('registerUs
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login'); 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/home',[PostController::class, 'home'])->name('frontOffice.home');

@@ -45,17 +45,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+    
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            if ($user->role_id == '1') {
-                return redirect()->route('admin.books');
-            } else {
-                return redirect()->route('user.show.book');
-            }
+            return redirect()->route('frontOffice.home');
         }
-
+    
         return redirect()->route('login')->with('error', 'Invalid login credentials. Please try again.');
     }
 
@@ -68,7 +62,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/home');
+        return redirect()->route('frontOffice.home');
     }
 
 }

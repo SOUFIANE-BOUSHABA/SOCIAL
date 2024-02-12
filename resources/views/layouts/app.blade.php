@@ -56,24 +56,7 @@
                         
                         @auth
                         <div class="d-flex gap-4 align-items-center">
-                           <div>
-                            <div class="dropdown">
-                              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="bi bi-bell"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-end"   style="margin-left: -300px ; width:400px" >
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                
-                                            <th scope="col">book title</th>
-                                            <th scope="col">end date</th>
-                                          </tr>
-                                        </thead>
-                                       
-                                </ul>
-                            </div>
-                           </div>
+                         
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
