@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -28,7 +29,8 @@ Route::delete('/home/{id}',[PostController::class,'DeletePost'])->name('DeletePo
 
 //Route::post('/home/{id}/',[PostController::class ,'TchickLike'])->name('TchickLike');
 
-Route::post('/like/{id}', [PostController::class,'PostLike'])->name('PostLike')->middleware('auth');
+Route::post('/like/{id}', [LikeController::class,'PostLike'])->name('PostLike')->middleware('auth');
+
 Route::get('/like/{id}', [PostController::class,'PostLike'])->name('profile-like')->middleware('auth');
 
 

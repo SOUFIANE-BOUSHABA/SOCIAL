@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -57,12 +57,12 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-
     public function followers()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id')
             ->withTimestamps();
     }
+
     public function followings()
     {
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')

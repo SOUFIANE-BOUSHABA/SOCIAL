@@ -105,6 +105,29 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="">About</a>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Notifications
+                                    @if(auth()->user()->unreadNotifications->count() > 0)
+                                        <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                    @endif
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @forelse(auth()->user()->unreadNotifications as $notification)
+                                        <a class="dropdown-item" href="">
+                                            {{ $notification->data['liker_name'] }} <span class="text-primary">liked</span>  your post
+                                        </a>
+                                    @empty
+                                        <div class="dropdown-item">No notifications</div>
+                                    @endforelse
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="">Clear notifications</a>
+                                </div>
+                            </li>
+                            
+                            
+                          
                         </div>
 
                         <div class="d-flex">
