@@ -32,7 +32,7 @@ Route::post('/like/{id}', [PostController::class,'PostLike'])->name('PostLike')-
 Route::get('/like/{id}', [PostController::class,'PostLike'])->name('profile-like')->middleware('auth');
 
 
-Route::get('/users',[UserController::class, 'show'])->name('frontOffice.users');
+Route::get('/users',[UserController::class, 'show'])->name('frontOffice.users')->middleware('auth');
 Route::get('/SearchUsers/{search}',[UserController::class, 'search'])->name('frontOffice.search');
 
 Route::get('/profil/{id}',[UserController::class, 'showProfile'])->name('profil')->middleware('auth');
