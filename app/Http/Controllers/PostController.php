@@ -13,6 +13,10 @@ class PostController extends Controller
 {
     // function for display all user posts
 
+    public function Findunername($onerid){
+        $oner=User::where('id',$onerid)->value('name');
+        return $oner;
+    }
     public function home(){
      
         
@@ -20,17 +24,19 @@ class PostController extends Controller
         $comments=Comment::all();
         $userId = Auth::id();
         $user=User::select('name')->where('id', $userId)->first();
+        
+
+         foreach ($posts as $post) {
+            $post->onerpost = $this->Findunername($post->user_id);
+            $post->likesCount = $this->CountLike($post->id);
+       }
+
         foreach ($posts as $post) {
              $post->likesCount = $this->CountLike($post->id);
         }
 
         $commentN=new CommentController();
-           //  $commentN->getNumberOfcomment();
-       # dd($commentN->getNumberOfcomment());
-        // foreach ($comments as $comment)
-        // {
-        //   $post->comment = $comments->CountComment($post_id);
-        // }
+      
         return view('front-office.home',compact('user','posts'))->with('userId',$userId);
     }
 

@@ -11,8 +11,10 @@
              <div class="d-flex gap-4 align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                     <div class="ml-3">
-                        <h5 class="mb-0">{{$user->name}}</h5>
+                    <!-- @if(auth()->check() && auth()->id() === $post->user_id) -->
+                        <h5 class="mb-0">{{$post->onerpost}}</h5>
                         <small class="text-muted">2 hours ago</small>
+                    <!-- @endif     -->
                     </div>
                 </div>
              <!-- icon for delete-->  
@@ -69,12 +71,12 @@
              <div class="d-flex gap-4 align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                     <div class="ml-3">
-                        <h5 class="mb-0">{{$user->name}}</h5>
+                        <h5 class="mb-0">{{$comments->onercomment}}</h5>
                         <small class="text-muted">2 hours ago</small>
                     </div>
                 </div>
              <!-- icon for delete--> 
-             @if($userId === $post->user_id)   
+             @if(auth()->check() && auth()->id() === $comment->user_id)   
                 <form action="{{ route('DeleteComment',['id' =>$comment->id]) }}"method="post">
                         @csrf
                         @method('DELETE')
