@@ -143,7 +143,7 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                             <a class="dropdown-item" href="{{ route('profil', auth()->id()) }}">Profil</a>
-
+                                            <a class="dropdown-item text-danger" href="{{ route('delete-account') }}">Delete Account</a>
                                             <a class="dropdown-item text-danger" href="{{ route('logout') }}">Logout</a>
 
                                         </div>
