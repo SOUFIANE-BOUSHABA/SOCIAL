@@ -8,7 +8,6 @@
         </div>
         <div class="col-md-6" style="margin-top:100px">
             <div class="card border-0">
-
                 <div class="card-body">
                     @if($errors->any())
                         <div class="alert alert-danger">

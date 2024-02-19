@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->text('content');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -18,6 +18,8 @@ class CreateFollowersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('follower_id')->constrained('users');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 

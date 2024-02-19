@@ -18,6 +18,7 @@ class CreateLikesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('post_id')->constrained();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

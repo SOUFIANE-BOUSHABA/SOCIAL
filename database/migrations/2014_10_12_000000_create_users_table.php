@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->text('bio')->nullable();
             $table->string('avatar')->nullable();
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -6,6 +6,7 @@
         <div class="col-md-6">
             <img src="{{ asset('images/login.jpg') }}" alt="Login Image" class="img-fluid">
         </div>
+
         <div class="col-md-5 " style="margin-top: 150px">
             <div class="card border-0">
 
@@ -15,6 +16,7 @@
                             {{ session('error') }}
                         </div>
                     @endif
+
                     <form method="POST" action="">
                         @csrf
 
@@ -42,6 +44,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+       
         @if(Session::has('success'))
             const Toast = Swal.mixin({
             toast: true,

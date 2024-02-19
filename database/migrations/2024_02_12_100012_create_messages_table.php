@@ -19,6 +19,8 @@ class CreateMessagesTable extends Migration
             $table->foreignId('recipient_id')->constrained('users');
             $table->text('content');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -19,6 +19,8 @@ class CreateCommentsTable extends Migration
             $table->foreignId('post_id')->constrained();
             $table->text('content');
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 
