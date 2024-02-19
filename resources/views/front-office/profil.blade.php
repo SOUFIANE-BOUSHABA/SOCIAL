@@ -116,12 +116,13 @@
                         <div class="card mb-3">
 
                             <div class="card-body">
-                                <form action="{{ route('AddPost') }}" method="post">
+                                <form method="post" action="{{ route('AddPost') }}">
                                     @csrf
+                                    @method('POST')
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="3" name="content" placeholder="Write your post..."></textarea>
+                                        <textarea class="form-control" name="content" rows="3" placeholder="Write your post..."></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mt-4">Post</button>
+                                    <button type="submit" value="Save" class="btn btn-primary mt-4">Post</button>
                                 </form>
                             </div>
                         </div>
@@ -147,7 +148,7 @@
                                 <hr>
                                 <div class="d-flex justify-content-between">
                                     <button class="btn d-flex gap-3 align-items-center">
-                                        <a href="{{ route('PostLike', $post->id) }}">
+                                        <a href="{{ route('profile-like', $post->id) }}">
 
                                             @if ($post->likes->contains('user_id', auth()->id()))
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="heartSvg"
