@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <!-- Add this line -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
@@ -58,9 +58,17 @@
 
 
 
+        .heartSvg:hover path {
+            fill: red;
+        }
+        .commentSvg:hover path {
+            fill: rgb(85, 15, 236);
+        }
 
-
-
+        a{
+            text-decoration: none;
+            color: black;
+        }
 
 
 
@@ -108,7 +116,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                    
-                                    <a class="dropdown-item" href="{{ route('profil') }}">Profil</a>
+                                    <a class="dropdown-item" href="{{ route('profil' , auth()->id()) }}">Profil</a>
                                     
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}">Logout</a>
                           
