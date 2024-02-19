@@ -18,13 +18,19 @@ public function index($id_post)
     $userId = Auth::id();
     $comments = Comment::where('post_id',$id_post)->get();
     
-     dd($comments->user_id);
+
+    foreach ($comments as $comment) {
+        $comment->onercomment=User::find($comment->user_id)->name;
+
+    }
+
     $user = User::select('name')->where('id', $userId)->first();
     $like=new LikeController();  
     $postcoment =new PostController()  ;
     $post->likesCount =$like->CountLike($id_post);
     $post->onerpost =$postcoment->Findunername($post->user_id);
-    $comments->onercomment = $postcoment->Findunername($comments->user_id);
+
+    // $comment->onercomment = $postcoment->Findunername($comments->user_id);
     
     return view('front-office.comment', compact('user','post','comments'))->with('userId',$userId); 
    

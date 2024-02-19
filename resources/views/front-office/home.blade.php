@@ -19,7 +19,7 @@
     </div>
 
 
-    <!-- post cards-->
+    <!--------------- post cards---------------------------------->
  @foreach($posts as $post)
 <div class="card shadow border-0 p-4">
  <div class="card-body">         
