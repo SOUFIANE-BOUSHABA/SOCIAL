@@ -28,7 +28,8 @@ Route::delete('/home/{id}',[PostController::class,'DeletePost'])->name('DeletePo
 
 //Route::post('/home/{id}/',[PostController::class ,'TchickLike'])->name('TchickLike');
 
-Route::post('/home/{id}', [PostController::class,'PostLike'])->name('PostLike')->middleware('auth');
+Route::post('/like/{id}', [PostController::class,'PostLike'])->name('PostLike')->middleware('auth');
+Route::get('/like/{id}', [PostController::class,'PostLike'])->name('profile-like')->middleware('auth');
 
 
 Route::get('/users',[UserController::class, 'show'])->name('frontOffice.users');
