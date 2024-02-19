@@ -47,3 +47,8 @@ Route::delete('/home/{id}/delete',[CommentController::class,'DeleteComment'])->n
 
 Route::get('/follow/{userId}', [FollowerController::class, 'follow'])->name('follow.user')->middleware('auth');
 Route::get('/followers/{userId}', [FollowerController::class, 'followers'])->name('followers.user')->middleware('auth');
+
+
+
+
+Route::get('/delete-account', [UserController::class, 'deleteAccount'])->middleware(['auth'])->name('delete-account');

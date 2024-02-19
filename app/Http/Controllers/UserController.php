@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Follower;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -36,5 +37,22 @@ class UserController extends Controller
        $followingCount =Follower::where('follower_id', $user->id)->count();
         return view('front-office.profil', compact('user', 'posts' , 'followersCount' , 'followingCount'));
    
+    }
+
+
+
+
+
+    public function deleteAccount()
+    {
+        $user = Auth::user(); 
+    
+        if ($user) {
+            User::destroy($user->id);
+    
+            Auth::logout();
+            return redirect()->route('home')->with('success', 'Account deleted successfully.');
+        }
+        return redirect()->route('home')->with('error', 'Failed to delete account.');
     }
 }
