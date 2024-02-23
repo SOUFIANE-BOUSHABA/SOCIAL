@@ -106,7 +106,7 @@
                                 <a class="nav-link" href="">About</a>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Notifications
                                     @if(auth()->user()->unreadNotifications->count() > 0)
@@ -124,7 +124,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="">Clear notifications</a>
                                 </div>
-                            </li>
+                            </li> --}}
                             
                             
                           
