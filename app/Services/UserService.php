@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Repository\IUserRepository;
 use Illuminate\Support\Facades\Hash;
+use App\DTO\UserRegistrationDTO;
 
 class UserService implements IUserService
 {
@@ -16,12 +17,12 @@ class UserService implements IUserService
     }
 
     
-    public function registerUser($name, $email, $password)
+    public function registerUser(UserRegistrationDTO $userDTO)
     {
         return $this->userRepository->create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
+            'name' => $userDTO->getName(),
+            'email' => $userDTO->getEmail(),
+            'password' => Hash::make($userDTO->getPassword()),
             'role_id' => 2,
         ]);
     }
