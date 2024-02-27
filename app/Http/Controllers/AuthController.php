@@ -1,22 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ReservationController;
+use App\Services\IUserService;
 
 class AuthController extends Controller
 {
-    //
+    protected $userService;
 
-    public function index(){
+    public function __construct(IUserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    public function index()
+    {
         return view("auth.login");
     }
-    public function showForm(){
+
+    public function showForm()
+    {
         return view("auth.register");
     }
 
@@ -28,41 +32,35 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'role_id'=>2,
-        ]);
+        $this->userService->registerUser(
+            $request->input('name'),
+            $request->input('email'),
+            $request->input('password')
+        );
 
         Session::flash('success', 'Registration successful. Please login.');
 
         return redirect()->route('login');
     }
 
- 
-
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-    
-        if (Auth::attempt($credentials)) {
+
+        if ($this->userService->loginUser($credentials['email'], $credentials['password'])) {
             return redirect()->route('frontOffice.home');
         }
-    
+
         return redirect()->route('login')->with('error', 'Invalid login credentials. Please try again.');
     }
 
-
     public function logout(Request $request)
     {
-        Auth::logout();
+        $this->userService->logoutUser();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect()->route('frontOffice.home');
     }
-
 }
