@@ -3,7 +3,8 @@
 @section('content')
     <!-- Post input -->
     <div class="container mt-5">
-
+<div class="d-flex gap-2">
+    <div class="col-md-8">
         <div class="card mb-3">
 
             <div class="card-body">
@@ -17,10 +18,10 @@
                 </form>
             </div>
         </div>
-
-
+    
+    
         @foreach ($posts as $post)
-            <div class="card shadow border-0 p-4 mb-4">
+            <div class="card shadow-sm border-0 p-4 mb-4">
                 <div class="card-body">
                     <div class="mb-4 d-flex  justify-content-between">
                         <div class="d-flex gap-4 align-items-center">
@@ -45,17 +46,17 @@
                             </form>
                         @endif
                     </div>
-
+    
                     <p class="post-content">{{ $post->content }} </p>
-
-
+    
+    
                     <div class=" d-flex  justify-content-between">
-
+    
                         <div>
                             <form action="{{ route('PostLike', ['id' => $post->id]) }}" method="post">
                                 @csrf
                                 @method('POST')
-
+    
                                 <button class="btn d-flex gap-3 align-items-center" type="submit">
                                     @if ($post->likes->contains('user_id', auth()->id()))
                                         <svg xmlns="http://www.w3.org/2000/svg" class="heartSvg" style="width: 20px  ;"
@@ -73,11 +74,11 @@
                                     <span class="likesNumber">{{ $post->likesCount }}</span>
                                 </button>
                             </form>
-
-
+    
+    
                         </div>
-
-
+    
+    
                         <!-- Comment-->
                         <a href="{{ route('Comment', ['id' => $post->id]) }}">
                             @csrf
@@ -90,11 +91,27 @@
                                 <span class="">{{ $post->comments->count() }}</span>
                             </button>
                         </a>
-
+    
                     </div>
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="col-md-4  ">
+        <div class="card trending">
+            <div class="card-body">
+                <h5 class="card-title">Trending</h5>
+                <ul class="list-group">
+                    <li class="list-group">Post 1</li>
+                    <li class="list-group">Post 2</li>
+                </ul>
+            </div>
+        </div>    
+    </div>        
+   
+</div>
+       
 
 
 
@@ -123,6 +140,10 @@
 
             .secondary:hover+.dropdown-menu {
                 display: block;
+            }
+
+            .trending{
+                height: 100vh;
             }
         </style>
 

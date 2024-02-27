@@ -47,6 +47,7 @@
                                             class="btn btn-dark">Followers </button></a>
                                    <a href="/chatify/{{$user->id}}"><button class="btn btn-outline-primary">Message</button></a> 
                                 </div>
+
                             </div>
                             <hr class="my-4">
                             <ul class="list-group list-group-flush">

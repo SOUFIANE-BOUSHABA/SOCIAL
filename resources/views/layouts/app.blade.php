@@ -138,7 +138,10 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            NAME
+                                          @auth
+                                              {{Auth::user()->name}}
+
+                                          @endauth
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
