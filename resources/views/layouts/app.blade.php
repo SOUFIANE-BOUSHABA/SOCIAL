@@ -14,6 +14,9 @@
     <style>
         nav {
             margin-top: -20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
 
         .user-avatar {
