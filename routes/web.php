@@ -24,7 +24,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/home',[PostController::class, 'home'])->name('frontOffice.home');
-Route::post('/home',[PostController::class,'AddPost'])->name('AddPost');
+Route::post('/home',[PostController::class,'AddPost'])->name('AddPost')->middleware('auth');
 Route::delete('/home/{id}',[PostController::class,'DeletePost'])->name('DeletePost');
 
 //Route::post('/home/{id}/',[PostController::class ,'TchickLike'])->name('TchickLike');
@@ -40,7 +40,7 @@ Route::get('/SearchUsers/{search}',[UserController::class, 'search'])->name('fro
 Route::get('/profil/{id}',[UserController::class, 'showProfile'])->name('profil')->middleware('auth');
 
 Route::get('/home/{id}',[CommentController::class,'index'])->name('Comment');
-Route::post('/home/Comment/{id}',[CommentController::class,'AddComment'])->name('AddComment');
+Route::post('/home/Comment/{id}',[CommentController::class,'AddComment'])->name('AddComment')->middleware('auth');
 
 Route::delete('/home/{id}/delete',[CommentController::class,'DeleteComment'])->name('DeleteComment');
 

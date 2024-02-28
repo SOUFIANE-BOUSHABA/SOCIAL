@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\IUserService;
-
+use App\DTO\UserRegistrationDTO;
 class AuthController extends Controller
 {
     protected $userService;
@@ -32,11 +32,13 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $this->userService->registerUser(
+        $userRegistrationDTO = new UserRegistrationDTO(
             $request->input('name'),
             $request->input('email'),
             $request->input('password')
         );
+    
+        $this->userService->registerUser($userRegistrationDTO);
 
         Session::flash('success', 'Registration successful. Please login.');
 
