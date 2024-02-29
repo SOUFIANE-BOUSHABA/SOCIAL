@@ -18,13 +18,13 @@ class PostController extends Controller
         return $oner;
     }
     public function home(){
-     
-        
+
+
         $posts = Post::all();
         $comments=Comment::all();
         $userId = Auth::id();
         $user=User::select('name')->where('id', $userId)->first();
-        
+
 
          foreach ($posts as $post) {
             $post->onerpost = $this->Findunername($post->user_id);
@@ -36,7 +36,7 @@ class PostController extends Controller
         }
 
         $commentN=new CommentController();
-      
+
         return view('front-office.home',compact('user','posts'))->with('userId',$userId);
     }
 
@@ -45,23 +45,23 @@ class PostController extends Controller
     {
         $this->validate($request, [
              'content' => 'required|string|max:255'
-        ]); 
+        ]);
         $userId = Auth::id();
-      
+
         $post = new Post([
             'user_id' =>$userId,
             'content' =>$request->content
          ]);
-        $post->save();  
-     
+        $post->save();
+
 
         return redirect()->back()->with('success', 'Post add success!');
     }
 
 public function DeletePost($id)
-{  
-    Comment::where('post_id', $id)->delete(); 
-    Like::where('post_id', $id)->delete(); 
+{
+    Comment::where('post_id', $id)->delete();
+    Like::where('post_id', $id)->delete();
     Post::destroy($id);
     return redirect()->back()->with('success', 'Post delete success!');
 }
@@ -69,7 +69,7 @@ public function DeletePost($id)
     {
         $post = Post::find($postId);
         if ($post) {
-            $likesCount = $post->likes->count(); 
+            $likesCount = $post->likes->count();
         } else {
             $likesCount = 0;
         }
