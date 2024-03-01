@@ -21,21 +21,22 @@ class PostController extends Controller
 
 
         $posts = Post::all();
-        $comments=Comment::all();
+        // $comments=Comment::all();
         $userId = Auth::id();
         $user=User::select('name')->where('id', $userId)->first();
 
+        // dd($posts[0]->user->name);
 
          foreach ($posts as $post) {
             $post->onerpost = $this->Findunername($post->user_id);
             $post->likesCount = $this->CountLike($post->id);
        }
 
-        foreach ($posts as $post) {
-             $post->likesCount = $this->CountLike($post->id);
-        }
+    //     foreach ($posts as $post) {
+    //          $post->likesCount = $this->CountLike($post->id);
+    //     }
+    //    $commentN=new CommentController(); 
 
-        $commentN=new CommentController();
 
         return view('front-office.home',compact('user','posts'))->with('userId',$userId);
     }
@@ -58,13 +59,23 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post add success!');
     }
 
-public function DeletePost($id)
-{
-    Comment::where('post_id', $id)->delete();
-    Like::where('post_id', $id)->delete();
-    Post::destroy($id);
-    return redirect()->back()->with('success', 'Post delete success!');
-}
+    public function DeletePost($id)
+    {
+        $iduser = Auth::id();
+        $post = Post::where('id', $id)->where('user_id', $iduser)->first();
+    
+        if($post){
+            Comment::where('post_id', $id)->delete();
+            Like::where('post_id', $id)->delete();
+            $post->delete();
+            return redirect()->back()->with('success', 'Post delete success!');
+        }else{
+            return 'Post not found or you do not have permission to delete this post.';
+        }
+    }
+
+
+
     public function CountLike($postId)
     {
         $post = Post::find($postId);

@@ -25,7 +25,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home',[PostController::class, 'home'])->name('frontOffice.home');
 Route::post('/home',[PostController::class,'AddPost'])->name('AddPost')->middleware('auth');
-Route::delete('/home/{id}',[PostController::class,'DeletePost'])->name('DeletePost');
+Route::delete('/homeeee/{id}',[PostController::class,'DeletePost'])->name('DeletePost')->middleware('auth');
 
 //Route::post('/home/{id}/',[PostController::class ,'TchickLike'])->name('TchickLike');
 
