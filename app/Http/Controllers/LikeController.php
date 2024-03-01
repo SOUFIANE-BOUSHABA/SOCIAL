@@ -45,7 +45,7 @@ class LikeController extends Controller
                 $liker = auth()->user();
                 $post = Post::find($postId);
 
-                Notification::send($post->user, new PostLiked($liker, $post));
+                // Notification::send($post->user, new PostLiked($liker, $post));
                 
                 return redirect()->back()->with('likesCount', $likesCount)->with('success', 'Post liked successfully');
             }

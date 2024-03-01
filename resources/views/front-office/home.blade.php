@@ -22,7 +22,16 @@
             </div>
         </div>
     
-    
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        
         @foreach ($posts as $post)
             <div class="card shadow-sm border-0 p-4 mb-4">
                 <div class="card-body">
@@ -38,7 +47,7 @@
                                 <small class="text-muted">2 hours ago</small>
                             </div>
                         </div>
-                        @if (auth()->check() && auth()->id() === $post->user_id)
+                       
                             <form action="{{ route('DeletePost', $post->id) }}"method="post">
                                 @csrf
                                 @method('DELETE')
@@ -47,7 +56,7 @@
                                         delete
                                     </span></button>
                             </form>
-                        @endif
+                      
                     </div>
     
                     <p class="post-content">{{ $post->content }} </p>
